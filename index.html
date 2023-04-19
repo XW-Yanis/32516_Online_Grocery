@@ -8,21 +8,23 @@
   <!-- Bootstrap css -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-  <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
-
+  <!-- Nice Select css -->
   <link rel="stylesheet" href="css/nice-select.css">
+  <!-- Font Awesome css -->
+  <link rel="stylesheet" href="css/fontawesome.css">
+  <!-- My css -->
+  <link rel="stylesheet" href="css/mycss.css">
+  <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
     crossorigin="anonymous"></script>
+  <!-- JQuery -->
   <script src="js/jquery.js"></script>
   <script src="js/jquery.nice-select.js"></script>
-
-  <!-- <link rel="stylesheet" href="css/style.css"> -->
-  <!-- Responsive CSS -->
-  <!-- <link rel="stylesheet" href="css/responsive.css"> -->
-  <!-- Custom CSS -->
-  <!-- <link rel="stylesheet" href="css/custom.css"> -->
-  <!-- <link rel="stylesheet" href="css/nice-select.css"> -->
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/e6c249af2f.js" crossorigin="anonymous"></script>
+  <!-- myjs -->
+  <script src="js/myjs.js"></script>
 </head>
 
 <body>
@@ -36,12 +38,15 @@
   <header class="main-header">
     <!-- Nav bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
+      <div class="container d-flex justify-content-evenly">
         <!-- Hearder Navigation Start -->
         <!-- Logo part -->
         <div class="mavbar-header">
           <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="logo" alt="Daily Fresh Logo"
-              width="60" height="48" class="d-inline-block align-text-top">Daily Fresh</a>
+              width="60" height="48" class="d-inline-block align-text-top"><i style="color:#7bb385;"
+              class="fa-solid fa-font-case">Daily
+              Fresh</i>
+          </a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
             aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -51,43 +56,44 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ms-auto">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" id="frozen"
+                data-bs-auto-close="true">
                 Frozen Food
               </a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu" id="frozen-ul">
                 <li><a class="dropdown-item" href="#">Frozen-Vegetables</a></li>
                 <li><a class="dropdown-item" href="#">Frozen-Fruits</a></li>
                 <li><a class="dropdown-item" href="#">Frozen-Meats</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                id="fresh" data-bs-auto-close="true">
                 Fresh Food
               </a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu" id="fresh-ul">
                 <li><a class="dropdown-item" href="#">Vegetables</a></li>
                 <li><a class="dropdown-item" href="#">Fruits</a></li>
                 <li><a class="dropdown-item" href="#">Meats</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                id="beverage" data-bs-auto-close="true">
                 Beverage
               </a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu" id="beverage-ul">
                 <li><a class="dropdown-item" href="#">Soda</a></li>
                 <li><a class="dropdown-item" href="#">Tea</a></li>
                 <li><a class="dropdown-item" href="#">Coffee</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                id="home" data-bs-auto-close="true">
                 Home & Health
               </a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu" id="home-ul">
                 <li><a class="dropdown-item" href="#">Cleaning-Supplies</a></li>
                 <li><a class="dropdown-item" href="#">Personal-Care</a></li>
                 <li><a class="dropdown-item" href="#">Medical-Supplies</a></li>
@@ -95,11 +101,11 @@
             </li>
 
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                id="pet" data-bs-auto-close="true">
                 Pet Food
               </a>
-              <ul class="dropdown-menu">
+              <ul class="dropdown-menu" id="pet-ul">
                 <li><a class="dropdown-item" href="#">Dog Food</a></li>
                 <li><a class="dropdown-item" href="#">Cat Food</a></li>
                 <li><a class="dropdown-item" href="#">Bird Food</a></li>
@@ -131,6 +137,36 @@
       </div>
     </nav>
   </header>
+  <!-- Latest Product -->
+  <div class="latest-products">
+    <div class="container">
+      <div class="row">
+        <!-- Seciton Heading -->
+        <div class="col-md-12">
+          <div class="section-heading">
+            <h2>Latest Products</h2>
+            <a href="products.html">view all products <i class="fa fa-angle-right fa-2xl"></i></a>
+          </div>
+        </div>
+        <!-- Product Card -->
+        <div class="col-md-4">
+          <div class="product-item">
+            <a href="#"><img src="images/logo.png" alt=""></a>
+            <div class="down-content">
+              <a href="#">
+                <h4>Item name</h4>
+              </a>
+              <h6>$Item price</h6>
+              <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
+
+              <i class="fa-solid fa-cart-shopping fa-xl" style="color: #f2a154;"></i>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 
 
 </body>
