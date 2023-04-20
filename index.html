@@ -32,12 +32,11 @@
     $(document).ready(function () {
       $('select').niceSelect();
     });
-
   </script>
   <!-- Start main top -->
   <header class="main-header">
     <!-- Nav bar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
       <div class="container d-flex justify-content-evenly">
         <!-- Hearder Navigation Start -->
         <!-- Logo part -->
@@ -61,9 +60,8 @@
                 Frozen Food
               </a>
               <ul class="dropdown-menu" id="frozen-ul">
-                <li><a class="dropdown-item" href="#">Frozen-Vegetables</a></li>
-                <li><a class="dropdown-item" href="#">Frozen-Fruits</a></li>
-                <li><a class="dropdown-item" href="#">Frozen-Meats</a></li>
+                <li><a class="dropdown-item" href="#">Meats</a></li>
+                <li><a class="dropdown-item" href="#">Ice Cream</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -72,9 +70,9 @@
                 Fresh Food
               </a>
               <ul class="dropdown-menu" id="fresh-ul">
-                <li><a class="dropdown-item" href="#">Vegetables</a></li>
-                <li><a class="dropdown-item" href="#">Fruits</a></li>
                 <li><a class="dropdown-item" href="#">Meats</a></li>
+                <li><a class="dropdown-item" href="#">Cheese</a></li>
+                <li><a class="dropdown-item" href="#">Fruits</a></li>
               </ul>
             </li>
             <li class="nav-item dropdown">
@@ -83,7 +81,6 @@
                 Beverage
               </a>
               <ul class="dropdown-menu" id="beverage-ul">
-                <li><a class="dropdown-item" href="#">Soda</a></li>
                 <li><a class="dropdown-item" href="#">Tea</a></li>
                 <li><a class="dropdown-item" href="#">Coffee</a></li>
               </ul>
@@ -94,9 +91,10 @@
                 Home & Health
               </a>
               <ul class="dropdown-menu" id="home-ul">
-                <li><a class="dropdown-item" href="#">Cleaning-Supplies</a></li>
-                <li><a class="dropdown-item" href="#">Personal-Care</a></li>
-                <li><a class="dropdown-item" href="#">Medical-Supplies</a></li>
+                <li><a class="dropdown-item" href="#">Medicine</a></li>
+                <li><a class="dropdown-item" href="#">Personal Care</a></li>
+                <li><a class="dropdown-item" href="#">Cleaning</a></li>
+                <li><a class="dropdown-item" href="#">Snacks</a></li>
               </ul>
             </li>
 
@@ -109,6 +107,7 @@
                 <li><a class="dropdown-item" href="#">Dog Food</a></li>
                 <li><a class="dropdown-item" href="#">Cat Food</a></li>
                 <li><a class="dropdown-item" href="#">Bird Food</a></li>
+                <li><a class="dropdown-item" href="#">Fish Food</a></li>
               </ul>
             </li>
           </ul>
@@ -122,7 +121,7 @@
               <div class="form-floating" style="margin-right: .5rem!important;">
                 <select id="floatingSelect" name="price">
                   <option data-display="Filter By Price">Cancel</option>
-                  <option value="0-10">0 - 10$</option>
+                  <option value="0-10">0$ - 10$</option>
                   <option value="10-20">10$ - 20$</option>
                   <option value="20-30">20$ - 30$</option>
                 </select>
@@ -137,6 +136,10 @@
       </div>
     </nav>
   </header>
+  <!-- End Header -->
+
+  <button type="button" onclick="load()">Test</button>
+
   <!-- Latest Product -->
   <div class="latest-products">
     <div class="container">
@@ -148,8 +151,16 @@
             <a href="products.html">view all products <i class="fa fa-angle-right fa-2xl"></i></a>
           </div>
         </div>
+        <!-- Containers -->
+        <div id="product-container-1"></div>
+        <div id="product-container-2"></div>
+        <div id="product-container-3"></div>
+        <div id="product-container-4"></div>
+        <div id="product-container-5"></div>
+        <div id="product-container-6"></div>
+
         <!-- Product Card -->
-        <div class="col-md-4">
+        <div class="col-md-4" id="product-card-1">
           <div class="product-item">
             <a href="#"><img src="images/logo.png" alt=""></a>
             <div class="down-content">
@@ -158,17 +169,116 @@
               </a>
               <h6>$Item price</h6>
               <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
-
-              <i class="fa-solid fa-cart-shopping fa-xl" style="color: #f2a154;"></i>
+              <a href="#">
+                <i class="fa-solid fa-cart-shopping fa-xl" style="color: #f2a154;"></i></a>
             </div>
           </div>
         </div>
-
+        <div class="col-md-4" id="product-card-2">
+          <div class="product-item">
+            <a href="#"><img src="images/logo.png" alt=""></a>
+            <div class="down-content">
+              <a href="#">
+                <h4>Item name</h4>
+              </a>
+              <h6>$Item price</h6>
+              <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
+              <a href="#">
+                <i class="fa-solid fa-cart-shopping fa-xl" style="color: #f2a154;"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" id="product-card-3">
+          <div class="product-item">
+            <a href="#"><img src="images/logo.png" alt=""></a>
+            <div class="down-content">
+              <a href="#">
+                <h4>Item name</h4>
+              </a>
+              <h6>$Item price</h6>
+              <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
+              <a href="#">
+                <i class="fa-solid fa-cart-shopping fa-xl" style="color: #f2a154;"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" id="product-card-4">
+          <div class="product-item">
+            <a href="#"><img src="images/logo.png" alt=""></a>
+            <div class="down-content">
+              <a href="#">
+                <h4>Item name</h4>
+              </a>
+              <h6>$Item price</h6>
+              <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
+              <a href="#">
+                <i class="fa-solid fa-cart-shopping fa-xl" style="color: #f2a154;"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" id="product-card-5">
+          <div class="product-item">
+            <a href="#"><img src="images/logo.png" alt=""></a>
+            <div class="down-content">
+              <a href="#">
+                <h4>Item name</h4>
+              </a>
+              <h6>$Item price</h6>
+              <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
+              <a href="#">
+                <i class="fa-solid fa-cart-shopping fa-xl" style="color: #f2a154;"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4" id="product-card-6">
+          <div class="product-item">
+            <a href="#"><img src="images/logo.png" alt=""></a>
+            <div class="down-content">
+              <a href="#">
+                <h4>Item name</h4>
+              </a>
+              <h6>$Item price</h6>
+              <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
+              <a href="#">
+                <i class="fa-solid fa-cart-shopping fa-xl" style="color: #f2a154;"></i></a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
+  <!-- Shopping Cart -->
+  <div class="container-fuild" style="position:fixed; right:50px; bottom:180px">
+    <a href="#">
+      <i class="fa-solid fa-cart-shopping fa-2xl" style="color:#f2a154"></i>
+    </a>
+  </div>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="inner-content">
+            <p>Copyright &copy; 2023 Xiang Weng UTS-24624898.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    function load() {
+      const xhttp = new XMLHttpRequest();
 
+      xhttp.onload = function () {
+        let data = JSON.parse(xhttp.responseText);
+        console.log(data);
+      }
+      xhttp.open('get', 'getProducts.php');
+      xhttp.send();
+    }
 
+  </script>
 </body>
 
 </html>
