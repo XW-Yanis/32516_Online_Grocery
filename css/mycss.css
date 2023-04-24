@@ -31,9 +31,25 @@ body {
   overflow: hidden;
 }
 
-img {
+.animated-image {
   vertical-align: middle;
   border-style: none;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 1.5s, transform 1.5s;
+}
+
+.ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 400px;
+}
+
+.animated-image.loaded,
+.animated-image:not([src]) {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .product-item .down-content {
@@ -185,6 +201,18 @@ a {
   transition: color 1.5s ease;
 }
 
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+}
+
+.status {
+  color: #f2a154 !important;
+}
+
 .latest-products .section-heading a {
   float: right;
   margin-top: -35px;
@@ -202,11 +230,14 @@ a {
 }
 
 #navbarNavDropdown ul li {
-  margin: 0px 10px;
+  margin: 0px 2px;
+}
+
+.dropdown-toggle::after {
+  display: none;
 }
 
 .product-item i {
-  position: absolute;
-  bottom: 30px;
-  right: 30px;
+  position: relative;
+  left: 185px;
 }
