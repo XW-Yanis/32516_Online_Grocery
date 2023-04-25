@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Shopping Cart</title>
+  <title>Daily Fresh - Shopping Cart</title>
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <!-- Bootstrap css -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -99,7 +99,7 @@
             <hr>
           </div>
         </div>
-        <div class="col-12 d-flex shopping-box"><a href="checkout.html" class="ml-auto  hvr-hover" id="checkout">check
+        <div class="col-12 d-flex shopping-box"><a href="checkout.php" class="ml-auto  hvr-hover" id="checkout">check
             out</a>
         </div>
       </div>

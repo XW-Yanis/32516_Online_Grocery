@@ -3,6 +3,14 @@
     $('select').niceSelect();
   });
 </script>
+<style>
+  #search {
+    font-size: 16px;
+    color: #ffffff;
+    border: none;
+    padding: 5px 10px;
+  }
+</style>
 <!-- Start main top -->
 <header class="main-header">
   <!-- Nav bar -->
@@ -99,7 +107,7 @@
               </select>
             </div>
             <div class="d-grid gap-2 col-2 ms-auto">
-              <button class="btn btn-outline-success" type="submit">Search</button>
+              <button id="search" class="hvr-hover" type="submit">Search</button>
 
             </div>
           </form>

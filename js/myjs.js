@@ -99,7 +99,7 @@ function setClick() {
 
 function addToCart(product_id) {
   // check if the product has already been added
-  let foundProduct = cart.find(function (item) {
+  const foundProduct = cart.find(function (item) {
     return item.product_id === product_id;
   });
 
