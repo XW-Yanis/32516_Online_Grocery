@@ -48,38 +48,55 @@ function updateGrandTotal() {
 
 function checkoutBtnAction() {
   const checkoutBtn = document.getElementById('checkoutBtn');
-  checkoutBtn.addEventListener('click', function () {
-    const name = document.getElementById('firstName').value + document.getElementById('lastName').value;
-    const address = document.getElementById('address').value;
-    const email = document.getElementById('email').value;
-    const country = document.getElementById('country').value;
-    const state = document.getElementById('state').value;
-    const suburb = document.getElementById('suburb').value;
-    const orderTime = new Date().toLocaleString();
-    var items = [];
-    data.forEach(product => {
-      items.push({
-        product_name: product.product_name + product.unit_quantity,
-        quantity: product.quantity,
-        sub_total: product['unit_price'] * product['quantity']
-      });
-    });
-    var itemsDetail = "";
-    items.forEach(item => {
-      itemsDetail += item.product_name + " x " + item.quantity + " = $ " + item.sub_total + "<br>";
-    });
+  checkoutBtn.addEventListener('click', function handleClick() {
+    // advoid sending multiple emails
+    checkoutBtn.removeEventListener('click', handleClick);
 
-    const emailBody = `Hi ${name},<br><br>Thank you for shopping at Daily Fresh! Below is your order details.<br><br>
+    const emailInfo = renderEmailContent();
+    const emailAddress = emailInfo.emailAddress;
+    const emailBody = emailInfo.body;
+    const data = `email=${emailAddress}&body=${emailBody}`;
+    const xhttp = new XMLHttpRequest();
+
+    const url = "sendEmail.php";
+    xhttp.open("POST", url, true);
+    xhttp.onload = function () {
+      console.log(xhttp.responseText);
+      checkoutBtn.addEventListener('click', handleClick);
+    };
+    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhttp.send(data);
+  });
+}
+
+
+
+// Generate Email Content based on user input
+function renderEmailContent() {
+  const name = document.getElementById('firstName').value + " " + document.getElementById('lastName').value;
+  const address = document.getElementById('address').value;
+  const emailAddress = document.getElementById('email').value;
+  const country = document.getElementById('country').value;
+  const state = document.getElementById('state').value;
+  const suburb = document.getElementById('suburb').value;
+  const orderTime = new Date().toLocaleString();
+  var items = [];
+  data.forEach(product => {
+    items.push({
+      product_name: product.product_name + " / " + product.unit_quantity,
+      quantity: product.quantity,
+      sub_total: product['unit_price'] * product['quantity']
+    });
+  });
+  var itemsDetail = "";
+  items.forEach(item => {
+    itemsDetail += item.product_name + " x " + item.quantity + " = $ " + item.sub_total.toFixed(2) + "<br>";
+  });
+
+  const emailBody = `Hi ${name},<br><br>Thank you for shopping at Daily Fresh! Below is your order details.<br><br>
     Order Time: ${orderTime}<br><br>
     Shipping Address: ${address}, ${suburb}, ${state}, ${country}<br><br>
     Your Order Items:<br>${itemsDetail}<br><br>
-    Total: $ ${grandTotal.toFixed(2)}<br><br>`
-
-    xhttp = new XMLHttpRequest();
-    xhttp.onload = function () {
-      console.log(this.responseText);
-    }
-    xhttp.open("GET", "sendConfirmationEmail.php", true);
-    xhttp.send();
-  });
+    Grand total: $ ${grandTotal.toFixed(2)}<br><br>`
+  return { emailAddress: emailAddress, body: emailBody };
 }

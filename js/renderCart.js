@@ -34,7 +34,7 @@ function renderCart(data) {
     <td class="quantity-box"><input type="number" size="4" value="${product['quantity']}" min="1" max="20" step="1"
       class="c-input-text qty text"></td>
     <td class="total-pr">
-      <p>$ ${product['unit_price'] * product['quantity']}</p>
+      <p>$ ${(product['unit_price'] * product['quantity']).toFixed(2)}</p>
     </td>
     <td class="remove-pr">
       <a href="#">
