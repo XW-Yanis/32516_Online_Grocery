@@ -1,5 +1,4 @@
 
-var cart = [];
 
 // Parse the data from the result of getProdcuts.php to JSON 
 function getData(url, callback) {
@@ -98,25 +97,18 @@ function setClick() {
 }
 
 function addToCart(product_id) {
-  // check if the product has already been added
-  const foundProduct = cart.find(function (item) {
-    return item.product_id === product_id;
-  });
+  const cart = retrieveCartItemsFromCookie();
+  const targetItem = cart.find(item => item.product_id === product_id);
 
-  if (!foundProduct) {
-    cart.push({
-      product_id: product_id,
-      quantity: 1
-    });
+  if (targetItem) {
+    targetItem.quantity++;
   } else {
-    foundProduct.quantity++;
+    cart.push({ product_id, quantity: 1 });
   }
-  const itemsFromCookie = retrieveCartItemsFromCookie();
-  const updatedCart = itemsFromCookie.concat(cart);
-  document.cookie = "cart=" + JSON.stringify(updatedCart);
+  document.cookie = "cart=" + JSON.stringify(cart);
   alert("Product has added successfully.");
 }
-
+// Retrieve items from cookie, and if the cart is empty, return an empty array
 function retrieveCartItemsFromCookie() {
   const cookies = Object.fromEntries(document.cookie.split('; ').map(c => {
     const [key, value] = c.split('=');
@@ -125,5 +117,5 @@ function retrieveCartItemsFromCookie() {
     }
     return [key, value];
   }));
-  return cookies['cart'];
+  return cookies['cart'] || []; // return empty array if cart is undefined
 }

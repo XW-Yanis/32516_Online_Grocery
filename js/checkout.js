@@ -11,7 +11,7 @@ function initialize() {
   xhttp.send();
   checkoutBtnAction();
 }
-
+// SHow a list of the products in the cart
 function renderCart(data) {
   const insertPosition = document.getElementById('insert-position');
   data.forEach(product => {
@@ -29,7 +29,7 @@ function renderCart(data) {
   });
   updateGrandTotal();
 }
-
+// REtrieve the cart items from cookie and parse them into an array
 function retrieveCartItemsFromCookie() {
   const cookies = Object.fromEntries(document.cookie.split('; ').map(c => {
     const [key, value] = c.split('=');
@@ -41,45 +41,28 @@ function retrieveCartItemsFromCookie() {
   const cartItems = cookies['cart'];
   return cartItems;
 }
-
+// Set up the grand total
 function updateGrandTotal() {
   document.getElementById('grand-total').innerHTML = '$ ' + grandTotal.toFixed(2);;
 };
 
+// submit the data to the server
 function checkoutBtnAction() {
   const checkoutBtn = document.getElementById('checkoutBtn');
-  checkoutBtn.addEventListener('click', function handleClick() {
-    // advoid sending multiple emails
-    checkoutBtn.removeEventListener('click', handleClick);
+  checkoutBtn.addEventListener('click', function (event) {
+    event.preventDefault();
+    if (validateForm() && validateEmail()) {
+      renderEmailContent();
+      document.querySelector('.needs-validation').submit();
+    }
+    else { alert("Please enter all fields") }
+  })
 
-    const emailInfo = renderEmailContent();
-    const emailAddress = emailInfo.emailAddress;
-    const emailBody = emailInfo.body;
-    const data = `email=${emailAddress}&body=${emailBody}`;
-    const xhttp = new XMLHttpRequest();
-
-    const url = "sendEmail.php";
-    xhttp.open("POST", url, true);
-    xhttp.onload = function () {
-      console.log(xhttp.responseText);
-      checkoutBtn.addEventListener('click', handleClick);
-    };
-    xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhttp.send(data);
-  });
 }
 
-
-
-// Generate Email Content based on user input
+// Generate Email Content of items and grand total
 function renderEmailContent() {
-  const name = document.getElementById('firstName').value + " " + document.getElementById('lastName').value;
-  const address = document.getElementById('address').value;
-  const emailAddress = document.getElementById('email').value;
-  const country = document.getElementById('country').value;
-  const state = document.getElementById('state').value;
-  const suburb = document.getElementById('suburb').value;
-  const orderTime = new Date().toLocaleString();
+
   var items = [];
   data.forEach(product => {
     items.push({
@@ -92,11 +75,41 @@ function renderEmailContent() {
   items.forEach(item => {
     itemsDetail += item.product_name + " x " + item.quantity + " = $ " + item.sub_total.toFixed(2) + "<br>";
   });
-
-  const emailBody = `Hi ${name},<br><br>Thank you for shopping at Daily Fresh! Below is your order details.<br><br>
-    Order Time: ${orderTime}<br><br>
-    Shipping Address: ${address}, ${suburb}, ${state}, ${country}<br><br>
-    Your Order Items:<br>${itemsDetail}<br><br>
-    Grand total: $ ${grandTotal.toFixed(2)}<br><br>`
-  return { emailAddress: emailAddress, body: emailBody };
+  document.getElementById('items-detail-text').value = itemsDetail;
+  document.getElementById('grand-total-text').value = grandTotal.toFixed(2);
 }
+
+
+// Validate the form. False will be returned if there is any empyt field 
+function validateForm() {
+  var elements = document.querySelectorAll('.needs-validation input[required], .needs-validation textarea[required], .needs-validation select[required]');
+  var isValid = true;
+
+  for (var i = 0; i < elements.length; i++) {
+    if (elements[i].value.trim() === '' || elements[i].value === elements[i].getAttribute('placeholder')) {
+      elements[i].classList.add('is-invalid');
+      isValid = false;
+    } else {
+      elements[i].classList.remove('is-invalid');
+    }
+  }
+  return isValid;
+}
+
+// Check if email is valid
+// The email should contain one or more letters, numbers, dots, dashes, underscores, percent, plus and minus,
+// followed by a @, and then one or more small characters, numbers, dot and minus, followed by a dot, 
+// and then 2 or more small characters.
+function validateEmail() {
+  var emailInput = document.getElementById("email");
+  var emailValue = emailInput.value.trim();
+  var pattern = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+  if (pattern.test(emailValue)) {
+    emailInput.classList.remove("is-invalid");
+    return true;
+  } else {
+    emailInput.classList.add("is-invalid");
+    return false;
+  }
+}
+

@@ -5,9 +5,11 @@ function initialize() {
   const xhttp = new XMLHttpRequest();
 
   xhttp.onload = function () {
-    data = JSON.parse(this.responseText)
-    renderCart(data);
-
+    data = JSON.parse(this.responseText);
+    if (data.length > 0) {
+      renderCart(data);
+    }
+    updateCheckout();
   }
   xhttp.open("GET", "getCartProducts.php", true);
   xhttp.send();
@@ -46,7 +48,6 @@ function renderCart(data) {
   });
   setListeners();
   calculateGrandTotal();
-  updateCheckout();
 }
 
 function setListeners() {

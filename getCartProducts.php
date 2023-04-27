@@ -14,7 +14,12 @@ if (!$con) {
   die("Could not connect to DB.");
 }
 
-$cartItems = json_decode($_COOKIE['cart'], true);
+if (isset($_COOKIE['cart'])) {
+  $cartItems = json_decode($_COOKIE['cart'], true);
+} else {
+  $cartItems = array();
+}
+
 $products = array();
 
 foreach ($cartItems as $cartItem) {
