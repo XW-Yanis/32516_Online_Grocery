@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Daily Fresh - Shopping Cart</title>
+  <title>Daily Fresh</title>
   <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <!-- Bootstrap css -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -24,8 +24,7 @@
   <script src="js/jquery.nice-select.js"></script>
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/e6c249af2f.js" crossorigin="anonymous"></script>
-  <!-- myjs -->
-  <script src="js/myjs.js"></script>
+  <script src="js/index.js"></script>
   <!-- renderCart -->
 </head>
 

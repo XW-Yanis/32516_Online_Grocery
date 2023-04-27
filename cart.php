@@ -26,10 +26,8 @@
   <script src="js/jquery.nice-select.js"></script>
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/e6c249af2f.js" crossorigin="anonymous"></script>
-  <!-- myjs -->
-  <script src="js/myjs.js"></script>
   <!-- renderCart -->
-  <script src="js/renderCart.js"></script>
+  <script src="js/cart.js"></script>
 </head>
 
 <body>
@@ -68,9 +66,8 @@
                   <th>Remove</th>
                 </tr>
               </thead>
-              <tbody id="insert-position">
-
-              </tbody>
+              <!-- This is where the items are going to be injected -->
+              <tbody id="insert-position"></tbody>
             </table>
           </div>
         </div>

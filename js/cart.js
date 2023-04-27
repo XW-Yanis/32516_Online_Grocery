@@ -50,8 +50,8 @@ function renderCart(data) {
   calculateGrandTotal();
 }
 
+// Set the total price of each item change based on the quantity, also change the quantity in cookie
 function setListeners() {
-  // Set the total price of each item change based on the quantity, also change the quantity in cookie
   const quantityInputs = document.querySelectorAll('.qty');
   quantityInputs.forEach(quantityInput => {
     quantityInput.addEventListener('input', () => {
@@ -68,6 +68,7 @@ function setListeners() {
       updateCartItem(product_id, quantity);
     });
   });
+
   // Set the remove buttons
   const removeBtns = document.querySelectorAll('.remove-pr a');
   removeBtns.forEach(button => {
@@ -83,13 +84,6 @@ function setListeners() {
 
 // Update the quantity of an item in the cart
 function updateCartItem(product_id, quantity) {
-  // const cookies = Object.fromEntries(document.cookie.split('; ').map(c => {
-  //   const [key, value] = c.split('=');
-  //   if (key === 'cart') {
-  //     return [key, JSON.parse(value)];
-  //   }
-  //   return [key, value];
-  // }));
   const cartItems = retrieveCartItemsFromCookie();
   cartItems.forEach(item => {
     if (item.product_id === product_id) {
@@ -102,13 +96,6 @@ function updateCartItem(product_id, quantity) {
 
 // Delet Item from cookie and update the cookie
 function removeFromCart(product_id) {
-  // const cookies = Object.fromEntries(document.cookie.split('; ').map(c => {
-  //   const [key, value] = c.split('=');
-  //   if (key === 'cart') {
-  //     return [key, JSON.parse(value)];
-  //   }
-  //   return [key, value];
-  // }));
   const cartItems = retrieveCartItemsFromCookie();
   const updatedCartItems = cartItems.filter(item => item.product_id !== product_id);
   document.cookie = 'cart=' + JSON.stringify(updatedCartItems);
@@ -146,13 +133,6 @@ function calculateGrandTotal() {
 // Check if the cart contains any items, if not, disable the checkout button
 function updateCheckout() {
   const checkoutButton = document.getElementById('checkout');
-  // const cookies = Object.fromEntries(document.cookie.split('; ').map(c => {
-  //   const [key, value] = c.split('=');
-  //   if (key === 'cart') {
-  //     return [key, JSON.parse(value)];
-  //   }
-  //   return [key, value];
-  // }));
   const cartItems = retrieveCartItemsFromCookie();
   if (cartItems && cartItems.length > 0) {
     checkoutButton.classList.remove('disabled-link');

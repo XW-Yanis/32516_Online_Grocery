@@ -1,16 +1,7 @@
-<script type="text/javascript">
-  $(document).ready(function () {
-    $('select').niceSelect();
-  });
-</script>
-<style>
-  #search {
-    font-size: 16px;
-    color: #ffffff;
-    border: none;
-    padding: 5px 10px;
-  }
-</style>
+<head>
+  <script src="js/header.js"></script>
+  <link rel="stylesheet" href="css/header.css">
+</head>
 <!-- Start main top -->
 <header class="main-header">
   <!-- Nav bar -->
@@ -29,8 +20,6 @@
           <span class="navbar-toggler-icon"></span>
         </button>
       </div>
-
-
       <!-- Dropdown DIV -->
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav ms-auto">
@@ -95,11 +84,11 @@
         </ul>
         <!-- Search Related, includs the search Box, the price range and the btn -->
         <div class="container-fuild">
-          <form class="d-flex" role="search" action="#" method="get">
+          <form id="search-form" class="d-flex" role="search" action="getSearchProducts.php" method="get">
             <input class="form-control me-2" type="search" placeholder="Search Products..." aria-label="Search"
-              style="width:auto">
+              style="width:auto" id="product-name">
             <div class="form-floating" style="margin-right: .5rem!important;">
-              <select id="floatingSelect" name="price">
+              <select id="floatingSelect">
                 <option data-display="Filter By Price">Cancel</option>
                 <option value="0-10">0$ - 10$</option>
                 <option value="10-20">10$ - 20$</option>
@@ -107,8 +96,7 @@
               </select>
             </div>
             <div class="d-grid gap-2 col-2 ms-auto">
-              <button id="search" class="hvr-hover" type="submit">Search</button>
-
+              <button id="search" class="hvr-hover" type="submit" onclick="searchBtnOnClick()">Search</button>
             </div>
           </form>
         </div>

@@ -1,5 +1,25 @@
+// To be called when DOM is ready
+function initialize() {
 
+  getData('getProducts.php', function (data) {
+    const indices = getRandomIndices(data, 6);
+    renderProducts(data, indices);
+    setClick();
+  });
+  const viewAll = document.getElementById('view-all');
+  viewAll.addEventListener('click', function () {
+    getData('getProducts.php', function (data) {
+      const products = document.getElementsByClassName('col-md-4');
+      document.getElementById('the-heading').innerHTML = 'Our Products';
+      while (products.length > 0) {
+        products[0].parentNode.removeChild(products[0]);
+      }
 
+      renderProducts(data, Array.from(Array(data.length).keys()));
+      setClick();
+    });
+  });
+}
 // Parse the data from the result of getProdcuts.php to JSON 
 function getData(url, callback) {
   const xhttp = new XMLHttpRequest();
@@ -60,28 +80,6 @@ function getRandomIndices(data, num) {
     indices.add(index);
   }
   return Array.from(indices);
-}
-
-// To be called when DOM is ready
-function initialize() {
-
-  getData('getProducts.php', function (data) {
-    const indices = getRandomIndices(data, 6);
-    renderProducts(data, indices);
-    setClick();
-  });
-  const viewAll = document.getElementById('view-all');
-  viewAll.addEventListener('click', function () {
-    getData('getProducts.php', function (data) {
-      const products = document.getElementsByClassName('col-md-4');
-      document.getElementById('the-heading').innerHTML = 'Our Products';
-      while (products.length > 0) {
-        products[0].parentNode.removeChild(products[0]);
-      }
-      renderProducts(data, Array.from(Array(data.length).keys()));
-      setClick();
-    });
-  });
 }
 
 // Set the click event for the add to cart buttons

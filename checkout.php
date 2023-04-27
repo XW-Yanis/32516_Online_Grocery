@@ -25,12 +25,11 @@
   <script src="js/jquery.nice-select.js"></script>
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/e6c249af2f.js" crossorigin="anonymous"></script>
-  <!-- myjs -->
-  <script src="js/myjs.js"></script>
+
+  <script src="js/checkout.js"></script>
 </head>
 
 <body>
-  <script src="js/checkout.js"></script>
   <script>window.onload = initialize;</script>
   <?php include 'header.php'; ?>
   <div class="all-title-box">
