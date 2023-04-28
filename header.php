@@ -8,7 +8,6 @@
 <!-- Start main top -->
 
 <body>
-  <scrpit>window.onload = headerInitialize</scrpit>
   <header class="main-header">
     <!-- Nav bar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light ">

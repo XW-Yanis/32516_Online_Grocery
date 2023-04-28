@@ -1,6 +1,5 @@
 // To be called when DOM is ready
 function initialize() {
-
   getData('services/getProducts.php', function (data) {
     const indices = getRandomIndices(data, 6);
     renderProducts(data, indices);
@@ -85,7 +84,6 @@ function getRandomIndices(data, num) {
 function setClick() {
   const addToCartBtns = Array.from(document.querySelectorAll('.add-to-cart'));
   const hyperlinks = Array.from(document.querySelectorAll('.detail'));
-
   addToCartBtns.forEach(btn => {
     btn.addEventListener('click', function (e) {
       e.preventDefault();
@@ -128,3 +126,5 @@ function retrieveCartItemsFromCookie() {
 function seeDetails(product_id) {
   window.location.href = `details.php?product_id=${product_id}`;
 }
+
+

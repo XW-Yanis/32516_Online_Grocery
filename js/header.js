@@ -6,7 +6,7 @@ $(document).ready(function () {
 });
 
 function headerInitialize() {
-  setClick();
+  setDropDownClick();
 }
 // Set the behaviour of the search button
 function searchBtnOnClick() {
@@ -49,7 +49,7 @@ function searchBtnOnClick() {
   });
 }
 
-function setClick() {
+function setDropDownClick() {
   const dropdownItems = document.querySelectorAll('.dropdown-item');
   dropdownItems.forEach(function (dropdownItem) {
     dropdownItem.addEventListener('click', function (e) {

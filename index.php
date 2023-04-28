@@ -25,7 +25,7 @@
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/e6c249af2f.js" crossorigin="anonymous"></script>
   <script src="js/index.js"></script>
-  <!-- renderCart -->
+  <script src="js/header.js"></script>
 </head>
 
 <body>
@@ -47,7 +47,7 @@
   </div>
 
   <!-- Shopping Cart -->
-  <div class="container-fuild" style="position:fixed; right:50px; bottom:180px">
+  <div class="container-fuild" style="position:fixed; right:50px; bottom:180px" draggable="true" id="cart-icon">
     <a href="cart.php">
       <i class="fa-solid fa-cart-shopping fa-2xl" style="color:#f2a154"></i>
     </a>
@@ -57,7 +57,10 @@
   <?php include 'footer.php'; ?>
 
   <script>
-    window.onload = initialize;
+    window.onload = function () {
+      initialize();
+      headerInitialize();
+    }
   </script>
 </body>
 
