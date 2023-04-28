@@ -7,7 +7,7 @@ function initialize() {
     data = JSON.parse(this.responseText)
     renderCart(data);
   }
-  xhttp.open("GET", "getCartProducts.php", true);
+  xhttp.open("GET", "services/getCartProducts.php", true);
   xhttp.send();
   checkoutBtnAction();
 }

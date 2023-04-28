@@ -1,14 +1,14 @@
 // To be called when DOM is ready
 function initialize() {
 
-  getData('getProducts.php', function (data) {
+  getData('services/getProducts.php', function (data) {
     const indices = getRandomIndices(data, 6);
     renderProducts(data, indices);
     setClick();
   });
   const viewAll = document.getElementById('view-all');
   viewAll.addEventListener('click', function () {
-    getData('getProducts.php', function (data) {
+    getData('services/getProducts.php', function (data) {
       const products = document.getElementsByClassName('col-md-4');
       document.getElementById('the-heading').innerHTML = 'Our Products';
       while (products.length > 0) {
@@ -40,9 +40,9 @@ function renderProducts(data, indices) {
     const html = `
       <div class="col-md-4">
         <div class="product-item"  id="${product.product_id}">
-          <a href="#"><img class="animated-image" src="${product.img_url}" alt="${product.product_name}"></a>
+          <a class="detail" href="#"><img class="animated-image" src="${product.img_url}" alt="${product.product_name}"></a>
           <div class="down-content">
-            <a href="#">
+            <a class="detail" href="#">
               <h4>${product.product_name + ' / ' + product.unit_quantity}</h4>
             </a>
             <h6>$${product.unit_price}</h6>
@@ -82,9 +82,10 @@ function getRandomIndices(data, num) {
   return Array.from(indices);
 }
 
-// Set the click event for the add to cart buttons
+// Set the click event for the add to cart buttons, the images, and the name of the product.
 function setClick() {
   const addToCartBtns = Array.from(document.querySelectorAll('.add-to-cart'));
+  const hyperlinks = Array.from(document.querySelectorAll('.detail'));
 
   addToCartBtns.forEach(btn => {
     btn.addEventListener('click', function (e) {
@@ -92,6 +93,13 @@ function setClick() {
       addToCart(e.target.closest('.product-item').id);
     });
   });
+
+  hyperlinks.forEach(hyperlink => {
+    hyperlink.addEventListener('click', function (e) {
+      e.preventDefault();
+      seeDetails(e.target.closest('.product-item').id);
+    });
+  })
 }
 
 function addToCart(product_id) {
@@ -116,4 +124,8 @@ function retrieveCartItemsFromCookie() {
     return [key, value];
   }));
   return cookies['cart'] || []; // return empty array if cart is undefined
+}
+
+function seeDetails(product_id) {
+  window.location.href = `details.php?product_id=${product_id}`;
 }

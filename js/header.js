@@ -36,7 +36,7 @@ function searchBtnOnClick() {
       renderProducts(data, Array.from(Array(data.length).keys()));
       searchBtn.disabled = false;
     };
-    xhttp.open('post', 'getSearchProducts.php', true);
+    xhttp.open('post', 'services/getSearchProducts.php', true);
     xhttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhttp.send('param=' + encodeURIComponent(JSON.stringify(param)));
   });
