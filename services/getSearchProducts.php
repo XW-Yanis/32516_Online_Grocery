@@ -24,7 +24,11 @@ if (isset($_POST['param'])) {
     if (array_key_exists('productNames', $item)) {
       $mode = 1;
       $temp = preg_split('/\s+/', $item['productNames']);
-      $productNames = "'" . implode("', '", $temp) . "'";
+      if (count($temp) == 1) {
+        $productNames = "'" . $temp[0] . "'";
+      } else {
+        $productNames = "'" . implode("', '", $temp) . "'";
+      }
     } else if (array_key_exists('price', $item)) {
       $mode = -1;
       $price = preg_split('/\-{1}/', $item['price']);
