@@ -14,7 +14,6 @@ function initialize() {
       while (products.length > 0) {
         products[0].parentNode.removeChild(products[0]);
       }
-
       renderProducts(data, Array.from(Array(data.length).keys()));
       setClick();
     });
