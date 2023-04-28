@@ -32,7 +32,7 @@ function renderProductDetails(data) {
         </div>
         <div class="col-xl-7 col-lg-7 col-md-6">
           <div class="single-product-details">
-            <h2>${data.name + ' / ' + data.unit_quantity}</h2>
+            <h2>${data.product_name + ' / ' + data.unit_quantity}</h2>
             <h5> $ ${data.unit_price}</h5>
             <p>
             <h4>Short Description:</h4>
